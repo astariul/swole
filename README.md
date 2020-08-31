@@ -1,15 +1,27 @@
-<h1 align="center">dummygummy</h1>
-<p align="center">Short description of the package.</p>
+<h1 align="center">swole</h1>
+<p align="center">Short description of the package : TODO</p>
 
-<p align="center"><a href="https://github.com/colanim/python-repo/actions"><img src="https://github.com/colanim/python-repo/workflows/tests/badge.svg" alt="test status" /></a></p>
+<p align="center"><a href="https://github.com/astariul/swole/actions"><img src="https://github.com/astariul/swole/workflows/tests/badge.svg" alt="test status" /></a></p>
+
+<h2 align="center">Description</h2>
+
+TODO
 
 <h2 align="center">Install</h2>
 
 Simply run :
 
 ```console
-pip install git+https://github.com/colanim/python-repo.git
+pip install git+https://github.com/astariul/swole.git
 ```
+
+<h2 align="center">Usage</h2>
+
+TODO
+
+<h2 align="center">Dependencies</h2>
+
+TODO
 
 <h2 align="center">Contribute</h2>
 

@@ -1,4 +1,4 @@
-from dummygummy import hello_world
+from swole import hello_world
 
 
 def test_hello():

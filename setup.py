@@ -8,14 +8,14 @@ with open('requirements.txt') as fr:
 
 
 setuptools.setup(
-    name="dummygummy",
+    name="swole",
     version="0.1",
     author="Nicolas REMOND",
-    author_email="nicolas.remond@42maru.com",
-    description="Short description of the package.",
+    author_email="remondnicola@gmail.com",
+    description="Short description of the package. TODO",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/colanim/python-repo",
+    url="https://github.com/astariul/swole",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.6",

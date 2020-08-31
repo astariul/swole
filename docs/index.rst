@@ -1,4 +1,4 @@
-Welcome to dummygummy's documentation !
+Welcome to swole's documentation !
 =======================================
 
 Write your doc here.
@@ -8,4 +8,4 @@ Write your doc here.
    :caption: API Reference
    :name: sec-apiref
 
-   api_ref/dummygummy
+   api_ref/swole
