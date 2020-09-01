@@ -40,7 +40,7 @@ Check if code is well-formated :
 ```console
 pip install flake8
 
-flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
+flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --per-file-ignores="__init__.py:F401"
 ```
 
 ---
