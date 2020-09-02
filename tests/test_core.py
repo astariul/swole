@@ -32,3 +32,14 @@ def test_application_add_existing_route():
     app = Application()
     with pytest.raises(ValueError):
         app.add(Page())
+
+
+def test_page_html():
+    p = Page()
+    assert str(p.to_html()) == """<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+  <body></body>
+</html>"""
