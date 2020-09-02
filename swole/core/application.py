@@ -1,6 +1,9 @@
 from swole.core.page import Page
 
 
+SWOLE_CACHE = "~/.cache/swole"
+
+
 class Application():
     """ Class representing an application. An application is the englobing,
     object, which list all possible routes.
@@ -43,3 +46,18 @@ class Application():
             raise ValueError("This route ({}) is already set".format(page.route))
 
         self.pages[page.route] = page
+
+    def write(self, dir=SWOLE_CACHE):
+        """ Method to write the HTML of the application to files, in order to
+        later serve it.
+
+        Arguments:
+            dir (`str`, optional): Directory where to save HTML files. Defaults
+                to SWOLE_CACHE.
+        """
+        raise NotImplementedError
+
+    def serve(self):
+        """ Method to fire up the FastAPI server !
+        """
+        raise NotImplementedError
