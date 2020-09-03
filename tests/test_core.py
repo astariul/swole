@@ -43,3 +43,12 @@ def test_page_html():
   </head>
   <body></body>
 </html>"""
+
+
+def test_write_pages(tmpdir):
+    app = Application()
+    app.write(folder=tmpdir)
+    html_file = tmpdir.join("_.html")
+    with open(html_file) as f:
+        html = f.read()
+    assert html == str(app.pages['/'].to_html())
