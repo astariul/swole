@@ -8,3 +8,6 @@ __pycache__/
 
 # Docs build
 docs/_build/
+
+# Cache
+.cache/
