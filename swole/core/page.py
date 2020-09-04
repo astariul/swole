@@ -39,7 +39,7 @@ class Page():
         """ Method to add a widget to this page.
 
         Arguments:
-            widget (`Widget`): Widget to add. 
+            widget (`Widget`): Widget to add.
         """
         if not isinstance(widget, Widget):
             raise ValueError("The given argument is not a widget : {}".format(widget))
