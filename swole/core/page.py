@@ -33,7 +33,10 @@ class Page():
         Returns:
             dominate.document: HTML document corresponding to the page.
         """
-        return dominate.document(title=self.title)
+        doc = dominate.document(title=self.title)
+        for w in self.widgets:
+            doc.add(w.to_html())
+        return doc
 
     def add(self, widget):
         """ Method to add a widget to this page.
