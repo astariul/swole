@@ -24,6 +24,7 @@ class Input(Widget):
 
     def to_html(self):
         attributes = {
+            "id": self.id,
             "type": self.type,
         }
 

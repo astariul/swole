@@ -23,7 +23,7 @@ class Button(Widget):
         self.primary = primary
 
     def to_html(self):
-        attributes = {}
+        attributes = {"id": self.id}
 
         if self.primary:
             attributes["cls"] = "button-primary"
