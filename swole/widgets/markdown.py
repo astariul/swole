@@ -4,14 +4,14 @@ from swole.widgets.base import Widget
 
 
 class Markdown(Widget):
-    """ A general widget to write Markdown. 
+    """ A general widget to write Markdown.
 
     Attributes:
         content (`str`): Markdown content.
     """
     def __init__(self, content=""):
         """ Constructor.
-        
+
         Arguments:
             content (`str`, optional): Markdown content. Defaults to ``.
         """

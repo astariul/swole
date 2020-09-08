@@ -4,7 +4,7 @@ from swole.widgets.base import Widget
 
 
 class Button(Widget):
-    """ Widget to create a button. 
+    """ Widget to create a button.
 
     Attributes:
         text (`str`): Text of the button.
@@ -12,7 +12,7 @@ class Button(Widget):
     """
     def __init__(self, text="Button", primary=False):
         """ Constructor.
-        
+
         Arguments:
             text (`str`, optional): Text of the button. Defaults to `Button`.
             primary (`bool`, optional): Wether this button is primary or not.
@@ -29,4 +29,3 @@ class Button(Widget):
             attributes["cls"] = "button-primary"
 
         return button(self.text, **attributes)
-
