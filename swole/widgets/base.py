@@ -12,7 +12,7 @@ class Widget():
         Widget._id += 1
         self.id = Widget._id
 
-    def to_html(self):
+    def html(self):
         """ Method to get the `dominate` HTML of the widget. This HTML needs to
         be rendered.
 
@@ -20,3 +20,13 @@ class Widget():
             dominate.document: HTML document corresponding to the widget.
         """
         raise NotImplementedError()
+
+    def js(self):
+        """ Method to get the Javascript code (if any) of the widget, as a
+        string. Or `None` if there is no Javascript for this widget.
+
+        Returns:
+            str: Javascript code for the widget. `None` if there is no
+                javascript.
+        """
+        return None

@@ -22,7 +22,7 @@ class Input(Widget):
         self.type = type
         self.placeholder = placeholder
 
-    def to_html(self):
+    def html(self):
         attributes = {
             "id": self.id,
             "type": self.type,

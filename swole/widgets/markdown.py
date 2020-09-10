@@ -18,6 +18,6 @@ class Markdown(Widget):
         super().__init__()
         self.content = content
 
-    def to_html(self):
+    def html(self):
         # TODO : Full markdown parsing + convertion to dominate tags
         return p(self.content, id=self.id)
