@@ -36,7 +36,7 @@ def test_application_add_existing_route():
 
 def test_page_html():
     p = Page()
-    assert str(p.to_html()) == """<!DOCTYPE html>
+    assert str(p.html()) == """<!DOCTYPE html>
 <html>
   <head>
     <title>Home</title>
@@ -51,4 +51,4 @@ def test_write_pages(tmpdir):
     html_file = tmpdir.join("_.html")
     with open(html_file) as f:
         html = f.read()
-    assert html == str(app.pages['/'].to_html())
+    assert html == str(app.pages['/'].html())
