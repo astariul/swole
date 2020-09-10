@@ -1,4 +1,5 @@
 import dominate
+from dominate.tags import script
 
 from swole.widgets.base import Widget
 
@@ -34,8 +35,17 @@ class Page():
             dominate.document: HTML document corresponding to the page.
         """
         doc = dominate.document(title=self.title)
+
+        # Add Widgets HTML to the page
         for w in self.widgets:
             doc.add(w.html())
+
+        # Add Javascript code to the page
+        js = [w.js() for w in self.widgets]
+        js_str = "\n\n".join([s for s in js if s is not None])
+        if js_str != '':
+            doc.add(script(js_str))
+
         return doc
 
     def add(self, widget):

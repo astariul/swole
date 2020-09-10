@@ -35,4 +35,4 @@ class Button(Widget):
         return button(self.text, **attributes)
 
     def js(self):
-        return self.on_click.js()
+        return self.on_click.js() if self.on_click is not None else None
