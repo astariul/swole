@@ -72,7 +72,7 @@ class Application():
 
         self.files = {}
         for route, page in self.pages.items():
-            html_str = page.to_html().render()
+            html_str = page.html().render()
             path = os.path.join(folder, "{}.html".format(route_to_filename(route)))
             with open(path, 'w') as f:
                 f.write(html_str)

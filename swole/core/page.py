@@ -26,7 +26,7 @@ class Page():
         self.title = title
         self.widgets = []
 
-    def to_html(self):
+    def html(self):
         """ Method to get the `dominate` HTML of the page. This HTML needs to be
         rendered.
 
@@ -35,7 +35,7 @@ class Page():
         """
         doc = dominate.document(title=self.title)
         for w in self.widgets:
-            doc.add(w.to_html())
+            doc.add(w.html())
         return doc
 
     def add(self, widget):
