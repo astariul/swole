@@ -41,8 +41,7 @@ class Page():
             doc.add(w.html())
 
         # Add Javascript code to the page
-        js = [w.js() for w in self.widgets]
-        js_str = "\n\n".join([s for s in js if s is not None])
+        js_str = "\n\n".join([a.js() for a in self.ajax()])
         if js_str != '':
             doc.add(script(js_str))
 
@@ -58,3 +57,12 @@ class Page():
             raise ValueError("The given argument is not a widget : {}".format(widget))
 
         self.widgets.append(widget)
+
+    def ajax(self):
+        """ Method to retrieve all Ajax requests of this page.
+
+        Returns:
+            list of Ajax: List of Ajax requests.
+        """
+        ajax = [w.ajax() for w in self.widgets]
+        return [a for a in ajax if a is not None]

@@ -88,6 +88,14 @@ class Application():
             def index():
                 return FileResponse(html_file)
 
+        # Define the Ajax' routes
+        for page in self.pages:
+            for aj in page.ajax():
+                @self.fapi.get("/callbacks/{}".format(aj.fn_name))
+                def callback(inputs):
+                    return aj(page, *inputs)
+
+
     def serve(self, folder=SWOLE_CACHE, host='127.0.0.1', port=8000, log_level='info'):
         """ Method to fire up the FastAPI server !
 
