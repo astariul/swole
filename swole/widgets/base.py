@@ -21,12 +21,11 @@ class Widget():
         """
         raise NotImplementedError()
 
-    def js(self):
-        """ Method to get the Javascript code (if any) of the widget, as a
-        string. Or `None` if there is no Javascript for this widget.
+    def ajax(self):
+        """ Method to get the Ajax request (if any) of the widget. Or `None` if
+        there is no Ajax call for this widget.
 
         Returns:
-            str: Javascript code for the widget. `None` if there is no
-                javascript.
+            Ajax: Ajax request. `None` if there is no Ajax request.
         """
         return None

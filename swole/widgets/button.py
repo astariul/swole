@@ -34,5 +34,5 @@ class Button(Widget):
 
         return button(self.text, **attributes)
 
-    def js(self):
-        return self.on_click.js() if self.on_click is not None else None
+    def ajax(self):
+        return self.on_click if self.on_click is not None else None
