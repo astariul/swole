@@ -33,7 +33,7 @@ class Button(Widget):
             attributes["cls"] = "button-primary"
 
         if self.onclick is not None:
-            attributes["onclick"] = "callback_{}()".format(self.onclick.fn_name)
+            attributes["onclick"] = "callback_{}()".format(self.onclick.id)
 
         return button(self.text, **attributes)
 

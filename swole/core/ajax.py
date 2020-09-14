@@ -7,6 +7,9 @@ class Ajax():
         inputs (list of Widget): Inputs to the callback.
         trigger (Widget): Widget triggering the AJAX request.
     """
+
+    _id = 0
+
     def __init__(self, callback, inputs):
         """ Constructor. Make the AJAX from the function to execute, and define
         the inputs as given.
@@ -16,9 +19,10 @@ class Ajax():
             inputs (list of Widget): Inputs to the callback.
             trigger (Widget): Widget triggering the AJAX request.
         """
+        Ajax._id += 1
+        self.id = Ajax._id
         self.callback = callback
         self.inputs = inputs
-        self.fn_name = "_".join(str(i.id) for i in self.inputs)
 
     def __call__(self, page, *inputs):
         """ Main method, being called by the application with the right inputs.
@@ -69,4 +73,4 @@ class Ajax():
             }}
         }});
     }}
-""".format(self.fn_name, ",".join(['$("#{}").text()'.format(i.id) for i in self.inputs]), self.fn_name)
+""".format(self.id, ",".join(['$("#{}").text()'.format(i.id) for i in self.inputs]), self.id)

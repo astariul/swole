@@ -91,7 +91,7 @@ class Application():
         # Define the Ajax' routes
         for page in self.pages.values():
             for aj in page.ajax():
-                @self.fapi.get("/callbacks/{}".format(aj.fn_name))
+                @self.fapi.get("/callbacks/{}".format(aj.id))
                 def callback(inputs):
                     return aj(page, *inputs)
 
