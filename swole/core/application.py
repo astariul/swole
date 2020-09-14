@@ -95,7 +95,6 @@ class Application():
                 def callback(inputs):
                     return aj(page, *inputs)
 
-
     def serve(self, folder=SWOLE_CACHE, host='127.0.0.1', port=8000, log_level='info'):
         """ Method to fire up the FastAPI server !
 
