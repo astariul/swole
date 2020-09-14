@@ -89,7 +89,7 @@ class Application():
                 return FileResponse(html_file)
 
         # Define the Ajax' routes
-        for page in self.pages:
+        for page in self.pages.values():
             for aj in page.ajax():
                 @self.fapi.get("/callbacks/{}".format(aj.fn_name))
                 def callback(inputs):

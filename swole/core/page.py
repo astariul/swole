@@ -1,5 +1,6 @@
 import dominate
 from dominate.tags import script
+from dominate.util import raw
 
 from swole.widgets.base import Widget
 
@@ -43,7 +44,7 @@ class Page():
         # Add Javascript code to the page
         js_str = "\n\n".join([a.js() for a in self.ajax()])
         if js_str != '':
-            doc.add(script(js_str))
+            doc.add(script(raw(js_str)))
 
         return doc
 

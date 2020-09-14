@@ -18,7 +18,7 @@ class Ajax():
         """
         self.callback = callback
         self.inputs = inputs
-        self.fn_name = "_".join(i.id for i in self.inputs)
+        self.fn_name = "_".join(str(i.id) for i in self.inputs)
 
     def __call__(self, page, *inputs):
         """ Main method, being called by the application with the right inputs.
@@ -52,18 +52,21 @@ class Ajax():
         Returns:
             `str`: Javascript equivalent.
         """
-        return """function callback_{}() {
-    var data = [{}];
-    $.ajax({
-        type: "GET",
-        url: "/callback/{}",
-        data: JSON.stringify(data),
-        success: function (data) {
-
-            $("#results").text(data.summaries[0]);
-        },
-        failure: function (errMsg) {
-            alert(errMsg);
-        }
-    });
-}""".format(self.fn_name, ",".join(['$("#{}").text()'.format(i.id) for i in self.inputs]), self.fn_name)
+        return """
+    function callback_{}() {{
+        var data = [{}];
+        $.ajax({{
+            type: "GET",
+            url: "/callback/{}",
+            data: JSON.stringify(data),
+            success: function (data) {{
+                for (var key in data){{
+                    console.log( key, data[key] );
+                }}
+            }},
+            failure: function (errMsg) {{
+                alert(errMsg);
+            }}
+        }});
+    }}
+""".format(self.fn_name, ",".join(['$("#{}").text()'.format(i.id) for i in self.inputs]), self.fn_name)
