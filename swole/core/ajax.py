@@ -57,11 +57,11 @@ class Ajax():
             `str`: Javascript equivalent.
         """
         return """
-    function callback_{}() {{
-        var data = [{}];
+    function callback_{0}() {{
+        var data = {{{1}}};
         $.ajax({{
             type: "GET",
-            url: "/callback/{}",
+            url: "/callback/{0}",
             data: JSON.stringify(data),
             success: function (data) {{
                 for (var key in data){{
@@ -73,4 +73,4 @@ class Ajax():
             }}
         }});
     }}
-""".format(self.id, ",".join(['$("#{}").text()'.format(i.id) for i in self.inputs]), self.id)
+""".format(self.id, ",".join(['{0}: $("#{0}").text()'.format(i.id) for i in self.inputs]))
