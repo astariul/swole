@@ -5,6 +5,9 @@ from dominate.util import raw
 from swole.widgets.base import Widget
 
 
+JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+
+
 class Page():
     """ Class representing a page.
 
@@ -44,6 +47,7 @@ class Page():
         # Add Javascript code to the page
         js_str = "\n\n".join([a.js() for a in self.ajax()])
         if js_str != '':
+            doc.add(script(src=JQUERY_CDN))
             doc.add(script(raw(js_str)))
 
         return doc
