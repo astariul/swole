@@ -83,7 +83,7 @@ class Application():
 
             # Save also callbacks (along with their page)
             for aj in page.ajax():
-                self.callbacks[aj.id] = (page, aj)
+                self.callbacks[str(aj.id)] = (page, aj)
 
     def define_routes(self):
         """ Method defining the routes in the FastAPI app, to display the right

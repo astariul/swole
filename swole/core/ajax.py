@@ -24,7 +24,7 @@ class Ajax():
         self.callback = callback
         self.inputs = inputs
 
-    def __call__(self, page, *inputs):
+    def __call__(self, page, input_data):
         """ Main method, being called by the application with the right inputs.
         This method keep track of the value of each widget of the page, and
         based on what was changed, return only the element to change in the
@@ -32,17 +32,26 @@ class Ajax():
 
         Arguments:
             page (Page): Page calling the AJAX.
-            inputs (list of positional arguments): Inputs retrieved from the
-                page after the AJAX request was triggered.
+            input_data (dict): Inputs data retrieved from the page after the
+                AJAX request was triggered. It's a dict of `str` -> `str` where
+                the key is the ID of the widget and the value is the value of
+                the widget.
 
         Returns:
             dict: Dictionary of ID to value, containing all widgets to update.
         """
-        prev_values = {w.id: w.value for w in page.widgets}
+        # Update value that are given
+        for inp in self.inputs:
+            inp.set(input_data[str(inp.id)])
 
-        self.callback(*inputs)
+        # Keep dictionary of all current value
+        prev_values = {str(w.id): w.get_str() for w in page.widgets}
 
-        now_values = {w.id: w.value for w in page.widgets}
+        # Call the callback with the right inputs
+        self.callback(*[inp.get() for inp in self.inputs])
+
+        # After callback, see what changed
+        now_values = {str(w.id): w.get_str() for w in page.widgets}
 
         to_update = {}
         for k in prev_values:
@@ -60,7 +69,7 @@ class Ajax():
     function callback_{0}() {{
         var data = {{{1}}};
         $.ajax({{
-            type: "GET",
+            type: "POST",
             url: "/callback/{0}",
             data: JSON.stringify(data),
             success: function (data) {{
