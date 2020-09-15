@@ -1,4 +1,5 @@
 import os
+from typing import Dict
 
 from fastapi import FastAPI
 from starlette.responses import FileResponse
@@ -70,13 +71,19 @@ class Application():
         """
         os.makedirs(folder, exist_ok=True)
 
-        self.files = {}
+        self.files = {}         # Route -> HTML file
+        self.callbacks = {}     # Callback ID -> (Page, Ajax)
         for route, page in self.pages.items():
+            # Write HTML of the page
             html_str = page.html().render()
             path = os.path.join(folder, "{}.html".format(route_to_filename(route)))
             with open(path, 'w') as f:
                 f.write(html_str)
             self.files[route] = path
+
+            # Save also callbacks (along with their page)
+            for aj in page.ajax():
+                self.callbacks[aj.id] = (page, aj)
 
     def define_routes(self):
         """ Method defining the routes in the FastAPI app, to display the right
@@ -88,12 +95,11 @@ class Application():
             def index():
                 return FileResponse(html_file)
 
-        # Define the Ajax' routes
-        for page in self.pages.values():
-            for aj in page.ajax():
-                @self.fapi.get("/callbacks/{}".format(aj.id))
-                def callback(inputs):
-                    return aj(page, *inputs)
+        # Define the callback route
+        @self.fapi.post("/callback/{callback_id}")
+        def callback(callback_id, inputs: Dict[str, str]):
+            page, ajax = self.callbacks[callback_id]
+            return ajax(page, inputs)
 
     def serve(self, folder=SWOLE_CACHE, host='127.0.0.1', port=8000, log_level='info'):
         """ Method to fire up the FastAPI server !
