@@ -8,7 +8,7 @@ m = Markdown("Result : ")
 
 
 def addition(a, b):
-    m.content = "Result : {}".format(a + b)
+    m.set("Result : {}".format(a + b))
 
 
 aj = Ajax(addition, [a, b])
