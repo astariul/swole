@@ -39,3 +39,9 @@ class Button(Widget):
 
     def ajax(self):
         return self.onclick if self.onclick is not None else None
+
+    def get(self):
+        return self.text
+
+    def set(self, x):
+        self.text = x

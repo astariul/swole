@@ -29,3 +29,27 @@ class Widget():
             Ajax: Ajax request. `None` if there is no Ajax request.
         """
         return None
+
+    def get(self):
+        """ Method to get the current value of the widget.
+
+        Returns:
+            object: Current value of the widget.
+        """
+        raise NotImplementedError()
+
+    def get_str(self):
+        """ Method to get the current value of the widget, as a string.
+
+        Returns:
+            str: Current value of the widget.
+        """
+        return str(self.get())
+
+    def set(self, x):
+        """ Method to set the current value of the widget.
+
+        Arguments:
+            x (str): Value of the widget to set.
+        """
+        raise NotImplementedError()

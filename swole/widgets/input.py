@@ -21,6 +21,7 @@ class Input(Widget):
         super().__init__()
         self.type = type
         self.placeholder = placeholder
+        self.value = placeholder
 
     def html(self):
         attributes = {
@@ -32,3 +33,15 @@ class Input(Widget):
             attributes["placeholder"] = self.placeholder
 
         return input_(**attributes)
+
+    def get(self):
+        return self.value
+
+    def set(self, x):
+        if self.type == "number" and isinstance(x, str):
+            try:
+                self.value = float(x)
+            except ValueError:
+                self.value = 0
+        else:
+            self.value = x
