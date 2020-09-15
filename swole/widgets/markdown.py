@@ -27,4 +27,3 @@ class Markdown(Widget):
 
     def set(self, x):
         self.content = x
-
