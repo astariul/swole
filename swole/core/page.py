@@ -14,6 +14,7 @@ COMMON_JS = """
               data: JSON.stringify(data),
               success: function (data) {
                   for (var key in data) {
+                      $(`#${key}`).val(data[key]);
                       $(`#${key}`).text(data[key]);
                   }
               },

@@ -2,21 +2,25 @@ from swole import Application, Ajax
 from swole.widgets import Input, Button, Markdown
 
 
-a = Input()
-b = Input()
+i_a = Input()
+i_b = Input()
 m = Markdown("Result : ")
 
 
 def addition(a, b):
-    m.set("Result : {}".format(a + b))
+    res = a + b
+    m.set("Result : {}".format(res))
+    if res == 42:
+        i_a.set(42)
+        i_b.set(42)
 
 
-aj = Ajax(addition, [a, b])
+aj = Ajax(addition, [i_a, i_b])
 
 
 app = Application()
-app.pages['/'].add(a)
-app.pages['/'].add(b)
+app.pages['/'].add(i_a)
+app.pages['/'].add(i_b)
 app.pages['/'].add(Button("Compute", onclick=aj))
 app.pages['/'].add(m)
 
