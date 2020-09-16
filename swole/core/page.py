@@ -22,7 +22,8 @@ COMMON_JS = """
                   alert(errMsg);
               }
           });
-      }"""
+      }
+    """
 
 
 class Page():
