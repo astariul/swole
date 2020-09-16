@@ -8,14 +8,13 @@ from swole.widgets.base import Widget
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 COMMON_JS = """
       function callback(id, data) {
-          console.log(`/callback/${id}`);
           $.ajax({
               type: "POST",
               url: `/callback/${id}`,
               data: JSON.stringify(data),
               success: function (data) {
                   for (var key in data) {
-                      console.log( key, data[key] );
+                      $(`#${key}`).text(data[key]);
                   }
               },
               failure: function (errMsg) {
