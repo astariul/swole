@@ -6,6 +6,23 @@ from swole.widgets.base import Widget
 
 
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+COMMON_JS = """
+      function callback(id, data) {
+          console.log(`/callback/${id}`);
+          $.ajax({
+              type: "POST",
+              url: `/callback/${id}`,
+              data: JSON.stringify(data),
+              success: function (data) {
+                  for (var key in data) {
+                      console.log( key, data[key] );
+                  }
+              },
+              failure: function (errMsg) {
+                  alert(errMsg);
+              }
+          });
+      }"""
 
 
 class Page():
@@ -48,7 +65,7 @@ class Page():
         js_str = "\n\n".join([a.js() for a in self.ajax()])
         if js_str != '':
             doc.add(script(src=JQUERY_CDN))
-            doc.add(script(raw(js_str)))
+            doc.add(script(raw(js_str + "\n\n" + COMMON_JS)))
 
         return doc
 

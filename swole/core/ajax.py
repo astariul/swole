@@ -66,20 +66,7 @@ class Ajax():
             `str`: Javascript equivalent.
         """
         return """
-    function callback_{0}() {{
-        var data = {{{1}}};
-        $.ajax({{
-            type: "POST",
-            url: "/callback/{0}",
-            data: JSON.stringify(data),
-            success: function (data) {{
-                for (var key in data){{
-                    console.log( key, data[key] );
-                }}
-            }},
-            failure: function (errMsg) {{
-                alert(errMsg);
-            }}
-        }});
-    }}
-""".format(self.id, ",".join(['{0}: $("#{0}").text()'.format(i.id) for i in self.inputs]))
+      function callback_{0}() {{
+          var data = {{{1}}};
+          callback({0}, data);
+      }}""".format(self.id, ",".join(['{0}: $("#{0}").text()'.format(i.id) for i in self.inputs]))
