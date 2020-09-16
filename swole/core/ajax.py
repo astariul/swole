@@ -69,4 +69,4 @@ class Ajax():
       function callback_{0}() {{
           var data = {{{1}}};
           callback({0}, data);
-      }}""".format(self.id, ",".join(['{0}: $("#{0}").text()'.format(i.id) for i in self.inputs]))
+      }}""".format(self.id, ",".join(['{0}: $("#{0}").{1}()'.format(i.id, i.jquery_fn) for i in self.inputs]))

@@ -22,6 +22,7 @@ class Input(Widget):
         self.type = type
         self.placeholder = placeholder
         self.value = placeholder
+        self.jquery_fn = "val"
 
     def html(self):
         attributes = {
@@ -40,8 +41,12 @@ class Input(Widget):
     def set(self, x):
         if self.type == "number" and isinstance(x, str):
             try:
-                self.value = float(x)
-            except ValueError:
+                # Find if it's an int or a float
+                number = float(x)
+                integer = int(number)
+                # number, integer = float(x), int(x)
+                self.value = integer if number == integer else number
+            except ValueError:      # Empty input
                 self.value = 0
         else:
             self.value = x

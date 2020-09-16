@@ -11,6 +11,7 @@ class Widget():
         """ Constructor. """
         Widget._id += 1
         self.id = Widget._id
+        self.jquery_fn = "text"
 
     def html(self):
         """ Method to get the `dominate` HTML of the widget. This HTML needs to
