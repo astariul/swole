@@ -1,5 +1,4 @@
 import os
-import re
 
 
 class Skin():
@@ -68,7 +67,3 @@ class Skin():
         links = [line for line in lines if line.startswith("/* ") and line.endswith(" */") and len(line) > 6]
 
         return [link[3:-3] for link in links]
-
-
-
-
