@@ -11,15 +11,15 @@ def test_base_skin():
     assert s.fonts == ["https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"]
 
 
-@pytest.mark.parametrize("content,libs,fonts", [("Rules", [], []),
-    ("/*  */\n\nRules", [], []), ("/*  */\n\n/*  */\n\nRules", [], []),
-    ("/* A */\n\n/*  */\n\nRules", ['A'], []), ("/* A */\n\n/* B */\n\nRules", ['A'], ['B']),
-    ("/*  */\n\n/* B */\n\nRules", [], ['B']), ("/* A */\n\n/* B */", ['A'], ['B']),
-    ("/* A */\n/* 1 */\n\n/* B */\n/* 2 */\n\nRules", ['A', '1'], ['B', '2']),
-    ("/* A */\n/* 1 */\n\n/* B */\n\nRules", ['A', '1'], ['B']),
-    ("/* A */\n\n/* B */\n/* 2 */\n\nRules", ['A'], ['B', '2']),
-    ("/* A */\n\nRules", ['A'], [])])
-def test_parse_skin_file(content, libs, fonts):
+@pytest.mark.parametrize("content,libs,fonts,rules", [("Rules", [], [], "Rules"),
+    ("/*  */\n\nRules", [], [], "Rules"), ("/*  */\n\n/*  */\n\nRules", [], [], "Rules"),
+    ("/* A */\n\n/*  */\n\nRules", ['A'], [], "Rules"), ("/* A */\n\n/* B */\n\nRules", ['A'], ['B'], "Rules"),
+    ("/*  */\n\n/* B */\n\nRules", [], ['B'], "Rules"), ("/* A */\n\n/* B */", ['A'], ['B'], ""),
+    ("/* A */\n/* 1 */\n\n/* B */\n/* 2 */\n\nRules", ['A', '1'], ['B', '2'], "Rules"),
+    ("/* A */\n/* 1 */\n\n/* B */\n\nRules", ['A', '1'], ['B'], "Rules"),
+    ("/* A */\n\n/* B */\n/* 2 */\n\nRules", ['A'], ['B', '2'], "Rules"),
+    ("/* A */\n\nRules", ['A'], [], "Rules")])
+def test_parse_skin_file(content, libs, fonts, rules):
     tmp_path = os.path.join(tempfile.gettempdir(), os.urandom(24).hex())
     with open(tmp_path, 'w') as f:
         f.write(content)
@@ -27,5 +27,6 @@ def test_parse_skin_file(content, libs, fonts):
     s = Skin(path=tmp_path)
     assert s.libs == libs
     assert s.fonts == fonts
+    assert s.rules == rules
 
     os.remove(tmp_path)

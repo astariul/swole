@@ -35,7 +35,7 @@ def test_application_add_existing_route():
 
 
 def test_page_html():
-    p = Page()
+    p = Page(skin=None)
     assert str(p.html()) == """<!DOCTYPE html>
 <html>
   <head>
