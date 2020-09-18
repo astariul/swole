@@ -1,8 +1,9 @@
 import dominate
-from dominate.tags import script
+from dominate.tags import script, link, style
 from dominate.util import raw
 
 from swole.widgets.base import Widget
+from swole.skins import Skin
 
 
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -31,21 +32,25 @@ class Page():
 
     Attributes:
         route (`str`): The route to access this page.
-        skin (`str`): The name of the skin to use for this page.
+        skin (Skin): The Skin object for this page.
         title (`str`): The title of the page.
     """
-    def __init__(self, route="/", skin=None, title="Home"):
+    def __init__(self, route="/", skin="base", skin_path=None, title="Home"):
         """ Constructor.
 
         Arguments:
             route (`str`, optional): The route to access this page. Defaults to
                 `/`.
             skin (`str`, optional): The name of the skin to use for this page.
-                If `None`, base skin will be used. Defaults to `None`.
+                If `None` is given, no skin is loaded. Defaults to `base`.
+            skin_path (`str`, optional): The path of the Skin file to use. If
+                different than `None`, the `skin` argument is ignored, and this
+                file is used instead. Useful to provide custom Skin file.
+                Defaults to `None`.
             title (`str`, optional): The title of the page. Defaults to `Home`.
         """
         self.route = route
-        self.skin = skin
+        self.skin = Skin(name=skin, path=skin_path) if skin is not None else None
         self.title = title
         self.widgets = []
 
@@ -57,6 +62,18 @@ class Page():
             dominate.document: HTML document corresponding to the page.
         """
         doc = dominate.document(title=self.title)
+
+        # Add external files (Skin)
+        if self.skin is not None:
+            with doc.head:
+                for ref in self.skin.libs:      # Libs
+                    link(rel='stylesheet', crossorigin='anonymous', href=ref)
+
+                for ref in self.skin.fonts:      # Fonts
+                    link(rel='stylesheet', type='text/css', href=ref)
+
+                if self.skin.rules != "":
+                    style(raw(self.skin.rules))
 
         # Add Widgets HTML to the page
         for w in self.widgets:
