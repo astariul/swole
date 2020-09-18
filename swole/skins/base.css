@@ -1,3 +1,8 @@
 /* https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css */
 
 /* https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap */
+
+body {
+    font-family: "Montserrat";
+    background-color: red;
+}

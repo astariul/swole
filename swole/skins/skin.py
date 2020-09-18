@@ -1,4 +1,5 @@
 import os
+import re
 
 
 class Skin():
@@ -29,7 +30,7 @@ class Skin():
             path = os.path.join(skin_dir, "{}.css".format(name))
         self.path = path
 
-        self.libs, self.fonts = self._extract_ext_css(self.path)
+        self.libs, self.fonts, self.rules = self._extract_ext_css(self.path)
 
     def _extract_ext_css(self, path):
         """ Helper method to extract external links from a skin file.
@@ -40,18 +41,22 @@ class Skin():
         Returns:
             list of str: List of external CSS libraries links.
             list of str: List of external Fonts links.
+            str: The custom CSS rules for this skin. 
         """
         with open(path) as f:
             content = f.read()
 
+        pattern = re.compile(r"/\*.*?\*/", re.DOTALL)
+        uncommented_content = re.sub(pattern, "", content).strip()
+
         lines = content.split('\n\n')
         if len(lines) < 2:
-            return [], []
+            return [], [], uncommented_content
         libs_content, fonts_content, *_ = lines
 
         libs_links = self._extract_links(libs_content)
         font_links = self._extract_links(fonts_content)
-        return libs_links, font_links
+        return libs_links, font_links, uncommented_content
 
     def _extract_links(self, content):
         """ Helper function to extract links from a string representing several
