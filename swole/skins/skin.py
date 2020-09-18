@@ -41,7 +41,7 @@ class Skin():
         Returns:
             list of str: List of external CSS libraries links.
             list of str: List of external Fonts links.
-            str: The custom CSS rules for this skin. 
+            str: The custom CSS rules for this skin.
         """
         with open(path) as f:
             content = f.read()
