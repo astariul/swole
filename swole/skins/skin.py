@@ -44,7 +44,10 @@ class Skin():
         with open(path) as f:
             content = f.read()
 
-        libs_content, fonts_content, *_ = content.split('\n\n')
+        lines = content.split('\n\n')
+        if len(lines) < 2:
+            return [], []
+        libs_content, fonts_content, *_ = lines
 
         libs_links = self._extract_links(libs_content)
         font_links = self._extract_links(fonts_content)
