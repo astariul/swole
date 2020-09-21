@@ -41,7 +41,9 @@ def test_page_html():
   <head>
     <title>Home</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container"></div>
+  </body>
 </html>"""
 
 
