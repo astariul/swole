@@ -1,5 +1,5 @@
 import dominate
-from dominate.tags import script, link, style
+from dominate.tags import script, link, style, div, br
 from dominate.util import raw
 
 from swole.widgets.base import Widget
@@ -76,8 +76,11 @@ class Page():
                     style(raw(self.skin.rules))
 
         # Add Widgets HTML to the page
+        main_div = div(cls="container")
         for w in self.widgets:
-            doc.add(w.html())
+            main_div.add(w.html())
+            main_div.add(br())
+        doc.add(main_div)
 
         # Add Javascript code to the page
         js_str = "\n\n".join([a.js() for a in self.ajax()])
