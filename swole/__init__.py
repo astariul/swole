@@ -1,1 +1,1 @@
-from .core import Application, Page, Ajax
+from .core import Application, Page, Ajax, ajax

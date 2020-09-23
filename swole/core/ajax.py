@@ -1,3 +1,17 @@
+def ajax(*args):
+    """ Decorator to define Ajax objects easily.
+
+    Arguments:
+        args (list of Widget): Widget to use as input.
+
+    Returns:
+        Ajax: Ajax object with the given callable and inputs.
+    """
+    def define_ajax(f):
+        return Ajax(callback=f, inputs=args)
+    return define_ajax
+
+
 class Ajax():
     """ Class representing an AJAX request. It is used as callback to update
     the webpage dynamically.
