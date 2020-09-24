@@ -29,10 +29,7 @@ class Application():
         """ Constructor.
 
         Arguments:
-            pages (`dict`, optional): Dictionary[`str`: `Page`] listing routes
-                and their corresponding Page. If `None` is given, it
-                automatically create a page for the route `/`. Defaults to
-                `None`.
+            pages (`list`, optional): List of `Page`. Defaults to `None`.
         """
         self.pages = {p.route: p for p in pages} if pages is not None else {}
         self.files = None

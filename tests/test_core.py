@@ -1,8 +1,9 @@
 import pytest
 from swole import Application, Page
+from swole.widgets import Widget
 
 
-@pytest.mark.parametrize("args,routes", [([], ['/']), ([[Page(), Page('/test')]], ['/', '/test'])])
+@pytest.mark.parametrize("args,routes", [([], []), ([[Page(), Page('/test')]], ['/', '/test'])])
 def test_application_constructor(args, routes):
     app = Application(*args)
     for route in routes:
@@ -29,7 +30,7 @@ def test_application_add_wrong_object():
 
 
 def test_application_add_existing_route():
-    app = Application()
+    app = Application([Page()])
     with pytest.raises(ValueError):
         app.add(Page())
 
@@ -48,9 +49,49 @@ def test_page_html():
 
 
 def test_write_pages(tmpdir):
-    app = Application()
+    app = Application([Page()])
     app.write(folder=tmpdir)
     html_file = tmpdir.join("_.html")
     with open(html_file) as f:
         html = f.read()
     assert html == str(app.pages['/'].html())
+
+
+def test_assign_only_orphan(scratch):
+    app = Application()
+    w1 = Widget()
+    w2 = Widget()
+
+    app.assign_orphan_widgets()
+
+    assert "/" in app.pages
+    assert app.pages["/"].widgets[0] is w1
+    assert app.pages["/"].widgets[1] is w2
+
+
+def test_assign_orphan(scratch):
+    app = Application()
+    w1 = Widget()
+    w2 = Widget()
+    w3 = Widget()
+    p = Page("/test")
+    p.add(w2)
+    app.add(p)
+
+    app.assign_orphan_widgets()
+
+    assert "/" in app.pages and "/test" in app.pages
+    assert app.pages["/"].widgets[0] is w1
+    assert app.pages["/test"].widgets[0] is w2
+    assert app.pages["/"].widgets[1] is w3
+
+
+def test_assign_orphan_already_home(scratch):
+    app = Application([Page()])
+    Widget()
+    Widget()
+
+    app.assign_orphan_widgets()
+
+    assert "/" in app.pages
+    assert len(app.pages["/"].widgets) == 0
