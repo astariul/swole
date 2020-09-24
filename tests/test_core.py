@@ -108,4 +108,3 @@ def test_context_manager_page(scratch):
     assert len(p.widgets) == 2
     assert w1 in p.widgets
     assert w2 in p.widgets
-    
