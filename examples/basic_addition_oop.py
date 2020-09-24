@@ -1,4 +1,4 @@
-from swole import Application, ajax
+from swole import Application, Ajax, Page
 from swole.widgets import Input, Button, Markdown
 
 
@@ -7,7 +7,6 @@ i_b = Input()
 m = Markdown("Result : ")
 
 
-@ajax(i_a, i_b)
 def addition(a, b):
     res = a + b
     m.set("Result : {}".format(res))
@@ -16,8 +15,15 @@ def addition(a, b):
         i_b.set(42)
 
 
-Button("Compute", onclick=addition)
+aj = Ajax(addition, [i_a, i_b])
+
+app = Application()
+app.add(Page())
+app.pages['/'].add(i_a)
+app.pages['/'].add(i_b)
+app.pages['/'].add(Button("Compute", onclick=aj))
+app.pages['/'].add(m)
 
 
 if __name__ == "__main__":
-    Application().serve()
+    app.serve()
