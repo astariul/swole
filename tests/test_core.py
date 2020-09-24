@@ -95,3 +95,17 @@ def test_assign_orphan_already_home(scratch):
 
     assert "/" in app.pages
     assert len(app.pages["/"].widgets) == 0
+
+
+def test_context_manager_page(scratch):
+    Widget()
+    p = Page()
+    with p:
+        w1 = Widget()
+        w2 = Widget()
+    Widget()
+
+    assert len(p.widgets) == 2
+    assert w1 in p.widgets
+    assert w2 in p.widgets
+    
