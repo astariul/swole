@@ -110,3 +110,18 @@ class Page():
         """
         ajax = [w.ajax() for w in self.widgets]
         return [a for a in ajax if a is not None]
+
+    def __enter__(self):
+        """ Context manager for easy definition of Widgets inside the page :
+        Remember the declared widgets at this point.
+        """
+        self._from = len(Widget._declared)
+        return self
+
+    def __exit__(self, type, value, traceback):
+        """ Context manager for easy definition of Widgets inside the page :
+        Add any newly declared widgets.
+        """
+        new_widgets = Widget._declared[self._from:]
+        for w in new_widgets:
+            self.add(w)
