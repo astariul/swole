@@ -6,6 +6,7 @@ from swole.widgets.base import Widget
 from swole.skins import Skin
 
 
+HOME_ROUTE = "/"
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 COMMON_JS = """
       function callback(id, data) {
@@ -35,7 +36,7 @@ class Page():
         skin (Skin): The Skin object for this page.
         title (`str`): The title of the page.
     """
-    def __init__(self, route="/", skin="base", skin_path=None, title="Home"):
+    def __init__(self, route=HOME_ROUTE, skin="base", skin_path=None, title="Home"):
         """ Constructor.
 
         Arguments:

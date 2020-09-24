@@ -5,11 +5,13 @@ class Widget():
         id (int): The ID of the Widget. Each created Widget have his own ID.
     """
 
-    _id = 0
+    _id = 0             # Counter for the next Widget ID
+    _declared = []      # List of all declared Widget
 
     def __init__(self):
         """ Constructor. """
         Widget._id += 1
+        Widget._declared.append(self)
         self.id = Widget._id
         self.jquery_fn = "text"
 

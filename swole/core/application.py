@@ -5,8 +5,9 @@ from fastapi import FastAPI
 from starlette.responses import FileResponse
 import uvicorn
 
-from swole.core.page import Page
+from swole.core.page import Page, HOME_ROUTE
 from swole.core.utils import route_to_filename
+from swole.widgets import Widget
 
 
 SWOLE_CACHE = "~/.cache/swole"
@@ -33,10 +34,7 @@ class Application():
                 automatically create a page for the route `/`. Defaults to
                 `None`.
         """
-        if pages is None:
-            self.pages = {'/': Page()}
-        else:
-            self.pages = {p.route: p for p in pages}
+        self.pages = {p.route: p for p in pages} if pages is not None else {}
         self.files = None
         self.fapi = FastAPI()
 
@@ -60,6 +58,23 @@ class Application():
             raise ValueError("This route ({}) is already set".format(page.route))
 
         self.pages[page.route] = page
+
+    def assign_orphan_widgets(self):
+        """ Method finding orphan widgets if any, and assigning it to the Home
+        page if there is no Home page already. This allow a very simple and easy
+        way to use the library.
+        """
+        if HOME_ROUTE in self.pages:
+            # Home page already defined, nothing to do
+            return
+
+        home = Page()
+        assigned_widgets = set().union(*[page.widgets for page in self.pages.values()])
+        for w in Widget._declared:
+            if w not in assigned_widgets:       # Orphan !
+                home.add(w)
+
+        self.pages[HOME_ROUTE] = home
 
     def write(self, folder=SWOLE_CACHE):
         """ Method to write the HTML of the application to files, in order to
@@ -115,6 +130,7 @@ class Application():
                 [`critical`, `error`, `warning`, `info`, `debug`, `trace`].
                 Defaults to `info`.
         """
+        self.assign_orphan_widgets()
         self.write(folder=folder)
         self.define_routes()
 
