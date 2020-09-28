@@ -83,7 +83,7 @@ if __name__ == "__main__":
 Visit [`127.0.0.1:8000`](http://127.0.0.1:8000) :
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/22237185/94440029-1b74bb80-01dc-11eb-9fae-a385e1e89b01.png" width="200">
+    <img src="https://user-images.githubusercontent.com/22237185/94440029-1b74bb80-01dc-11eb-9fae-a385e1e89b01.png" width="280">
 </p>
 
 ---
