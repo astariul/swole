@@ -103,13 +103,13 @@ git checkout -b my_branch
 
 ---
 
-**Add your dogesome code !**
+Add your dogesome code !
 
 _Don't forget to update tests and documentation !_
 
 ---
 
-**Ensure tests are passing :**
+Ensure tests are passing :
 
 ```console
 pip install pytest
@@ -119,7 +119,7 @@ python -m pytest -W ignore::DeprecationWarning
 
 ---
 
-**Check if code is well-formated :**
+Check if code is well-formated :
 
 ```console
 pip install flake8
@@ -129,7 +129,7 @@ flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --per-fi
 
 ---
 
-**Submit your PR !**
+Submit your PR !
 
 <h2 align="center">FAQ</h2>
 
