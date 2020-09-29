@@ -3,17 +3,40 @@ class Widget():
 
     Attributes:
         id (int): The ID of the Widget. Each created Widget have his own ID.
+        jquery_fn (str): The name of the JQuery function to use to get the value
+            of the widget from the HTML page.
+        cls (list of str): List of CSS classes to apply to this widget.
     """
 
     _id = 0             # Counter for the next Widget ID
     _declared = []      # List of all declared Widget
 
-    def __init__(self):
+    def __init__(self, cls=None):
         """ Constructor. """
         Widget._id += 1
         Widget._declared.append(self)
         self.id = Widget._id
         self.jquery_fn = "text"
+
+        if cls is None:
+            self.cls = []
+        elif isinstance(cls, str):
+            self.cls = [cls]
+        elif isinstance(cls, list):
+            self.cls = [c for c in set(cls) if isinstance(c, str)]
+        else:
+            raise ValueError("The given CLS class should be a string or a list of string")
+
+    def add_css_class(self, attr):
+        """ Utils method to add the class attribute in the given dictionary.
+        This dictionary can then be used in `dominate`.
+
+        Arguments:
+            attr (dict): The attributes dictionary to be used in `dominate` tag
+                class.
+        """
+        if len(self.cls) != 0:
+            attr["cls"] = " ".join(self.cls)
 
     def html(self):
         """ Method to get the `dominate` HTML of the widget. This HTML needs to

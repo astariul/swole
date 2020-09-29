@@ -10,7 +10,7 @@ class Button(Widget):
         text (`str`): Text of the button.
         primary (`bool`): Wether this button is primary or not.
     """
-    def __init__(self, text="Button", primary=False, onclick=None):
+    def __init__(self, text="Button", primary=False, onclick=None, **kwargs):
         """ Constructor.
 
         Arguments:
@@ -21,16 +21,17 @@ class Button(Widget):
                 clicked. If `None`, nothing happend on click. Defaults to
                 `None`.
         """
-        super().__init__()
+        super().__init__(**kwargs)
         self.text = text
         self.primary = primary
         self.onclick = onclick
 
+        if primary:
+            self.cls.insert(0, "button-primary")
+
     def html(self):
         attributes = {"id": self.id}
-
-        if self.primary:
-            attributes["cls"] = "button-primary"
+        self.add_css_class(attributes)
 
         if self.onclick is not None:
             attributes["onclick"] = "callback_{}()".format(self.onclick.id)

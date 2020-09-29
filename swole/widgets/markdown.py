@@ -9,13 +9,13 @@ class Markdown(Widget):
     Attributes:
         content (`str`): Markdown content.
     """
-    def __init__(self, content=""):
+    def __init__(self, content="", **kwargs):
         """ Constructor.
 
         Arguments:
             content (`str`, optional): Markdown content. Defaults to ``.
         """
-        super().__init__()
+        super().__init__(**kwargs)
         self.content = content
 
     def html(self):

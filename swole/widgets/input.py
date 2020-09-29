@@ -10,7 +10,7 @@ class Input(Widget):
         type (`str`): Type of input.
         placeholder (`str`): Placeholder of input.
     """
-    def __init__(self, type="number", placeholder=None):
+    def __init__(self, type="number", placeholder=None, **kwargs):
         """ Constructor.
 
         Arguments:
@@ -18,7 +18,7 @@ class Input(Widget):
             placeholder (`str`, placeholder): Placeholder for the input. If
                 `None`, no placeholder is used. Defaults to `None`.
         """
-        super().__init__()
+        super().__init__(**kwargs)
         self.type = type
         self.placeholder = placeholder
         self.value = placeholder
@@ -29,6 +29,7 @@ class Input(Widget):
             "id": self.id,
             "type": self.type,
         }
+        self.add_css_class(attributes)
 
         if self.placeholder is not None:
             attributes["placeholder"] = self.placeholder
