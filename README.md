@@ -16,7 +16,7 @@ Streamlit, but better.
 </p>
 
 <p align="center">
-    <img src=".github/swole.png" width="350">
+    <img src="https://raw.githubusercontent.com/astariul/swole/master/.github/swole.png" width="350">
 </p>
 
 <h2 align="center">Description</h2>
@@ -27,7 +27,7 @@ Streamlit, but better.
 
 * **⚡ Highly performant** with [`FastAPI`](https://fastapi.tiangolo.com/) as backend
 * **🦋 Easily customizable** through the usage of skins
-* **<img src=".github/emoji.png" width="24"> Doge power !**
+* **<img src="https://raw.githubusercontent.com/astariul/swole/master/.github/emoji.png" width="24"> Doge power !**
 
 
 <h2 align="center">Install</h2>
@@ -155,5 +155,5 @@ Using AJAX instead makes the whole process almost invisible for the user, and ev
 It all comes from a meme :
 
 <p align="center">
-    <img src=".github/meme.png" width="450">
+    <img src="https://raw.githubusercontent.com/astariul/swole/master/.github/meme.png" width="450">
 </p>
