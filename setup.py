@@ -9,10 +9,10 @@ with open('requirements.txt') as fr:
 
 setuptools.setup(
     name="swole",
-    version="0.1",
+    version="0.0.1",
     author="Nicolas REMOND",
     author_email="remondnicola@gmail.com",
-    description="Short description of the package. TODO",
+    description="Streamlit, but better.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/astariul/swole",
