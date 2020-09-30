@@ -11,3 +11,7 @@ docs/_build/
 
 # Cache
 .cache/
+
+# Twine
+build/*
+dist/*
