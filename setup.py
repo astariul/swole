@@ -17,6 +17,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/astariul/swole",
     packages=setuptools.find_packages(),
+    package_data={'swole': ['skins/*.css']},
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Operating System :: OS Independent",
