@@ -3,7 +3,11 @@
 Streamlit, but better.
 </p>
 
-<p align="center"><a href="https://github.com/astariul/swole/actions"><img src="https://github.com/astariul/swole/workflows/tests/badge.svg" alt="test status" /></a></p>
+<p align="center">
+    <a href="https://github.com/astariul/swole/actions"><img src="https://github.com/astariul/swole/workflows/tests/badge.svg" alt="test status" /></a>
+    <a href="https://github.com/astariul/swole/releases"><img src="https://img.shields.io/github/v/release/astariul/swole" alt="release" /></a>
+    <a href="https://swole.readthedocs.io/en/latest/"><img src="https://readthedocs.org/projects/swole/badge/?version=latest" alt="doc status" /></a>
+</p>
 
 <p align="center">
   <a href="#description">Description</a> •
@@ -12,7 +16,7 @@ Streamlit, but better.
   <a href="#contribute">Contribute</a> •
   <a href="#faq">FAQ</a>
   <br>
-  <a href="https://todo.com" target="_blank">Documentation</a>
+  <a href="https://swole.readthedocs.io/en/stable/" target="_blank">Documentation</a>
 </p>
 
 <p align="center">
