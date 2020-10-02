@@ -113,14 +113,14 @@ class Application():
             page, ajax = self.callbacks[callback_id]
             return ajax(page, inputs)
 
-    def serve(self, folder=SWOLE_CACHE, host='127.0.0.1', port=8000, log_level='info'):
+    def serve(self, folder=SWOLE_CACHE, host='0.0.0.0', port=8000, log_level='info'):
         """ Method to fire up the FastAPI server !
 
         Arguments:
             folder (`str`, optional): Folder where to save HTML files. Defaults
                 to SWOLE_CACHE.
             host (`str`, optional): Run FastAPI on this host. Defaults to
-                `127.0.0.1`.
+                `0.0.0.0`.
             port (`int`, optional): Run FastAPI on this port. Defaults to
                 `8000`.
             log_level (`str`, optional): Log level to use for FastAPI. Can be
