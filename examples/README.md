@@ -6,6 +6,8 @@ This folder contains various examples. Each example is self-contained, so you ca
 python examples/<example_name.py>
 ```
 
+---
+
 ### `basic_addition.py`
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1AEh7AECBpL_kiXbRQkEK9SRCyKkeseSh?usp=sharing)
@@ -14,4 +16,4 @@ python examples/<example_name.py>
 
 
 Minimal example with AJAX request, doing addition between 2 numbers.  
-If the result is `42`, also update the input field to be `42` as well.
+If the result is `42`, also update the input fields to be `42` as well.
