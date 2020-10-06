@@ -1,3 +1,4 @@
+import pytest
 from swole import Application, Page
 from swole.widgets import Widget
 
@@ -67,6 +68,18 @@ def test_assign_orphan_already_home(scratch):
 
     assert "/" in Page._dict
     assert len(Page._dict["/"].widgets) == 2
+
+
+@pytest.mark.parametrize("routes", [['/'], ['/', '/t1', '/t2']])
+def test_define_route(scratch, routes):
+    app = Application()
+    app.files = {r: "whatever.html" for r in routes}
+    app.define_routes()
+
+    fapi_routes = [route.path for route in app.fapi.routes]
+    for r in routes:
+        assert r in fapi_routes
+    assert "/callback/{callback_id}" in fapi_routes
 
 
 def test_context_manager_page(scratch):
