@@ -7,6 +7,7 @@ from swole.skins import Skin
 
 
 HOME_ROUTE = "/"
+DEFAULT_FAVICON = "https://user-images.githubusercontent.com/22237185/95144545-e35d1200-07b3-11eb-9216-362b2a19c9aa.png"
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 COMMON_JS = """
       function callback(id, data) {
@@ -34,9 +35,11 @@ class Page():
     Attributes:
         route (`str`): The route to access this page.
         skin (Skin): The Skin object for this page.
+        favicon (`str`): The path to the favicon image to use for this page.
         title (`str`): The title of the page.
     """
-    def __init__(self, route=HOME_ROUTE, skin="base", skin_path=None, title="Home"):
+    def __init__(self, route=HOME_ROUTE, skin="base", skin_path=None,
+                 title="Home", favicon=DEFAULT_FAVICON):
         """ Constructor.
 
         Arguments:
@@ -49,9 +52,12 @@ class Page():
                 file is used instead. Useful to provide custom Skin file.
                 Defaults to `None`.
             title (`str`, optional): The title of the page. Defaults to `Home`.
+            favicon (`str`, optional): The path to the favicon to use for this
+                page. Defaults to doge image.
         """
         self.route = route
         self.skin = Skin(name=skin, path=skin_path) if skin is not None else None
+        self.favicon = favicon
         self.title = title
         self.widgets = []
 
@@ -63,6 +69,11 @@ class Page():
             dominate.document: HTML document corresponding to the page.
         """
         doc = dominate.document(title=self.title)
+
+        # Add favicon
+        if self.favicon is not None:
+            with doc.head:
+                link(rel='icon', href=self.favicon)
 
         # Add external files (Skin)
         if self.skin is not None:
