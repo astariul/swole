@@ -74,11 +74,21 @@ def test_assign_orphan_already_home(scratch):
 def test_define_route(scratch, routes):
     app = Application()
     app.files = {r: "whatever.html" for r in routes}
+    app.callbacks = {}
     app.define_routes()
 
     fapi_routes = [route.path for route in app.fapi.routes]
     for r in routes:
         assert r in fapi_routes
+
+
+def test_define_route_with_callbacks(scratch):
+    app = Application()
+    app.files = {}
+    app.callbacks = {1: "test"}
+    app.define_routes()
+
+    fapi_routes = [route.path for route in app.fapi.routes]
     assert "/callback/{callback_id}" in fapi_routes
 
 
