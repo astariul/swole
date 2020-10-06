@@ -1,4 +1,5 @@
 import os
+import enum
 from typing import Dict
 
 from fastapi import FastAPI
@@ -65,7 +66,7 @@ class Application():
 
             # Save also callbacks (along with their page)
             for aj in page.ajax():
-                self.callbacks[str(aj.id)] = (page, aj)
+                self.callbacks[aj.id] = (page, aj)
 
     def define_routes(self):
         """ Method defining the routes in the FastAPI app, to display the right
@@ -78,10 +79,14 @@ class Application():
                 return FileResponse(html_file)
 
         # Define the callback route
-        @self.fapi.post("/callback/{callback_id}")
-        def callback(callback_id, inputs: Dict[str, str]):
-            page, ajax = self.callbacks[callback_id]
-            return ajax(page, inputs)
+        if len(self.callbacks) != 0:
+            # Define a dynamic enum to ensure only specific callback ID are valid
+            cbe = enum.IntEnum('CallbackEnum', {str(c_id): c_id for c_id in self.callbacks.keys()})
+
+            @self.fapi.post("/callback/{callback_id}")
+            def callback(callback_id: cbe, inputs: Dict[str, str]):
+                page, ajax = self.callbacks[callback_id]
+                return ajax(page, inputs)
 
     def serve(self, folder=SWOLE_CACHE, host='0.0.0.0', port=8000, log_level='info'):
         """ Method to fire up the FastAPI server !
