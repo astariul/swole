@@ -14,64 +14,34 @@ SWOLE_CACHE = "~/.cache/swole"
 
 
 class Application():
-    """ Class representing an application. An application is the englobing,
-    object, which list all possible routes.
+    """ Class representing an application. Application are used to serve
+    declared pages.
 
     Attributes:
-        pages (`dict`): Dictionary[`str`: `Page`] listing all possible routes
-            and their corresponding Page.
         files (`dict`): Dictionary[`str`: `str`] listing all possible routes and
             their corresponding saved HTML file. This attribute is set only
             after calling the method `write()`.
         fapi (`fastapi.FastAPI`): FastAPI app.
     """
-    def __init__(self, pages=None):
-        """ Constructor.
-
-        Arguments:
-            pages (`list`, optional): List of `Page`. Defaults to `None`.
-        """
-        self.pages = {p.route: p for p in pages} if pages is not None else {}
+    def __init__(self):
+        """ Constructor. """
         self.files = None
         self.fapi = FastAPI()
 
-    def add(self, pages):
-        """ Method to add pages to the application.
-
-        Arguments:
-            pages (`Page` or `list`): Page or list of Page to add.
-        """
-        if isinstance(pages, list):
-            for page in pages:
-                self._add(page)
-        else:
-            self._add(pages)
-
-    def _add(self, page):
-        if not isinstance(page, Page):
-            raise ValueError("Expected a Page type, got a {} type instead".format(type(page)))
-
-        if page.route in self.pages:
-            raise ValueError("This route ({}) is already set".format(page.route))
-
-        self.pages[page.route] = page
-
     def assign_orphan_widgets(self):
         """ Method finding orphan widgets if any, and assigning it to the Home
-        page if there is no Home page already. This allow a very simple and easy
-        way to use the library.
+        page. If the home page does not exist, create it. This allow a very
+        simple and easy way to use the library.
         """
-        if HOME_ROUTE in self.pages:
-            # Home page already defined, nothing to do
-            return
+        if HOME_ROUTE not in Page._dict:
+            # No home page : create one
+            Page()
 
-        home = Page()
-        assigned_widgets = set().union(*[page.widgets for page in self.pages.values()])
+        home = Page._dict[HOME_ROUTE]
+        assigned_widgets = set().union(*[page.widgets for page in Page._dict.values()])
         for w in Widget._declared:
             if w not in assigned_widgets:       # Orphan !
                 home.add(w)
-
-        self.pages[HOME_ROUTE] = home
 
     def write(self, folder=SWOLE_CACHE):
         """ Method to write the HTML of the application to files, in order to
@@ -85,7 +55,7 @@ class Application():
 
         self.files = {}         # Route -> HTML file
         self.callbacks = {}     # Callback ID -> (Page, Ajax)
-        for route, page in self.pages.items():
+        for route, page in Page._dict.items():
             # Write HTML of the page
             html_str = page.html().render()
             path = os.path.join(folder, "{}.html".format(route_to_filename(route)))

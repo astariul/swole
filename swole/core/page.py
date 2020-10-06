@@ -38,6 +38,9 @@ class Page():
         favicon (`str`): The path to the favicon image to use for this page.
         title (`str`): The title of the page.
     """
+
+    _dict = {}      # Dictionary of all declared Page with their route
+
     def __init__(self, route=HOME_ROUTE, skin="base", skin_path=None,
                  title="Home", favicon=DEFAULT_FAVICON):
         """ Constructor.
@@ -55,6 +58,7 @@ class Page():
             favicon (`str`, optional): The path to the favicon to use for this
                 page. Defaults to doge image.
         """
+        Page._dict[route] = self
         self.route = route
         self.skin = Skin(name=skin, path=skin_path) if skin is not None else None
         self.favicon = favicon
