@@ -159,7 +159,8 @@ Using AJAX instead makes the whole process almost invisible for the user, and ev
 
 #### **Why do you say `swole` is "transparent" but `streamlit` is "opaque" ?**
 
-On a `swole` page, try to "view the page source" (right-click). Now, do the same on a `streamlit` page, and compare. 😇 
+On a `swole` page, try to "view the page source" (right-click).  
+Now, do the same on a `streamlit` page, and compare. 😇 
 
 #### **Why this name ?**
 
