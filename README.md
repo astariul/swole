@@ -2,6 +2,7 @@
 <p align="center">
 Streamlit, but better.
 </p>
+<h4 style="color:#FF0000" align="center">⚠️ For now this project is in Alpha version, only a proof-of-concept. Only minimal features are implemented</h4>
 
 <p align="center">
     <a href="https://github.com/astariul/swole/actions"><img src="https://github.com/astariul/swole/workflows/tests/badge.svg" alt="test status" /></a>
@@ -13,6 +14,7 @@ Streamlit, but better.
   <a href="#description">Description</a> •
   <a href="#install">Install</a> •
   <a href="#usage">Usage</a> •
+  <a href="/tree/master/examples">Examples</a> •
   <a href="#contribute">Contribute</a> •
   <a href="#faq">FAQ</a>
   <br>
