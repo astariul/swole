@@ -5,3 +5,7 @@
 body {
     font-family: "Montserrat";
 }
+.container {
+    max-width: 800px;
+    margin-top: 6rem;
+}
