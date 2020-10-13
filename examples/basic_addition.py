@@ -16,6 +16,7 @@ def addition(a, b):
         i_a.set(42)
         i_b.set(42)
 
+
 b.onclick = addition
 
 
