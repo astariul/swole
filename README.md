@@ -14,7 +14,7 @@ Streamlit, but better.
   <a href="#description">Description</a> •
   <a href="#install">Install</a> •
   <a href="#usage">Usage</a> •
-  <a href="/tree/master/examples">Examples</a> •
+  <a href="https://github.com/astariul/swole/tree/master/examples">Examples</a> •
   <a href="#contribute">Contribute</a> •
   <a href="#faq">FAQ</a>
   <br>
