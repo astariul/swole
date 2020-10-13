@@ -4,6 +4,7 @@ from swole.widgets import Input, Button, Markdown
 
 i_a = Input()
 i_b = Input()
+b = Button("Compute")
 m = Markdown("Result : ")
 
 
@@ -15,8 +16,7 @@ def addition(a, b):
         i_a.set(42)
         i_b.set(42)
 
-
-Button("Compute", onclick=addition)
+b.onclick = addition
 
 
 if __name__ == "__main__":
