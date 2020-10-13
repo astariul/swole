@@ -10,7 +10,7 @@ class Input(Widget):
         type (`str`): Type of input.
         placeholder (`str`): Placeholder of input.
     """
-    def __init__(self, type="number", placeholder=None, **kwargs):
+    def __init__(self, type="number", placeholder=None, wide=True, **kwargs):
         """ Constructor.
 
         Arguments:
@@ -23,6 +23,9 @@ class Input(Widget):
         self.placeholder = placeholder
         self.value = placeholder
         self.jquery_fn = "val"
+
+        if wide:
+            self.cls.append('u-full-width')
 
     def html(self):
         attributes = {
