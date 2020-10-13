@@ -33,6 +33,7 @@ Streamlit, but better.
 
 * **⚡ Highly performant** with [`FastAPI`](https://fastapi.tiangolo.com/) as backend
 * **🦋 Easily customizable** through the usage of skins
+* **💎 Transparent** (`streamlit` is opaque)
 * **<img src="https://raw.githubusercontent.com/astariul/swole/master/.github/emoji.png" width="24"> Doge power !**
 
 
@@ -155,6 +156,10 @@ Unlike `streamlit`, which use a system of cache and reload the page everytime so
 Reloading the page every interaction is very inefficient, and irritating for the user's experience.
 
 Using AJAX instead makes the whole process almost invisible for the user, and everything is more clear for the developper because we know what data is sent when.
+
+#### **Why do you say `swole` is "transparent" but `streamlit` is "opaque" ?**
+
+On a `swole` page, try to "view the page source" (right-click). Now, do the same on a `streamlit` page, and compare. 😇 
 
 #### **Why this name ?**
 
