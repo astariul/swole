@@ -1,9 +1,9 @@
 from dominate.tags import button
 
-from swole.widgets.base import Widget
+from swole.widgets.base import WideWidget
 
 
-class Button(Widget):
+class Button(WideWidget):
     """ Widget to create a button.
 
     Attributes:
