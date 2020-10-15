@@ -12,8 +12,8 @@ class Widget():
     _declared = []      # List of all declared Widget
 
     def __init__(self, cls=None):
-        """ Constructor. 
-        
+        """ Constructor.
+
         Arguments:
             cls (str or list of str, optional): Class(es) to add to the Widget.
                 Can be a single class (`str`) or several classes (`list of
@@ -98,7 +98,7 @@ class WideWidget(Widget):
 
     def __init__(self, wide=False, *args, **kwargs):
         """ Constructor.
-        
+
         Arguments:
             wide (bool, optional): If set to `True`, the widget will take all
                 the available width. Defaults to `False`.
