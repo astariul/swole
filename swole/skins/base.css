@@ -9,3 +9,6 @@ body {
     max-width: 800px;
     margin-top: 6rem;
 }
+label {
+    font-size: 1.2rem;
+}
