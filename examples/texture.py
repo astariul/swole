@@ -5,6 +5,7 @@ from swole.widgets import Input, Button, Markdown
 Input()
 Input(wide=False)
 Input(placeholder="placeholder", wide=False)
+Input(label="labeled", placeholder="placeholder", wide=False)
 
 Button("Button")
 Button("Button", wide=True)
