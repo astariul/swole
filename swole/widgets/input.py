@@ -1,8 +1,9 @@
 from dominate.tags import input_
 
-from swole.widgets.base import WideWidget
+from swole.widgets.base import WideWidget, labeled
 
 
+@labeled
 class Input(WideWidget):
     """ Widget to create an input.
 
