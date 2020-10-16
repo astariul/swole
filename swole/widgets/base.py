@@ -1,3 +1,6 @@
+from dominate.tags import div, label
+
+
 class Widget():
     """ Base class for all Widgets.
 
@@ -107,3 +110,31 @@ class WideWidget(Widget):
 
         if wide:
             self.cls.insert(0, 'u-full-width')
+
+
+def labeled(cls):
+    """ Class decorator for Widget that can be labeled. This decorator simply
+    define a sub-class of the given class, and change the constructor and the
+    html method to add a label.
+    """
+    class LabeledWidget(cls):
+        def __init__(self, label=None, *args, **kwargs):
+            """ Constructor.
+
+            Arguments:
+                label (`str`): Label to give to the Widget.
+            """
+            super().__init__(*args, **kwargs)
+            self.label = label
+
+        def html(self):
+            if self.label is None:
+                return super().html()
+            else:
+                d = div()
+                with d:
+                    label(self.label, _for=self.id)
+                    super().html()
+                return d
+
+    return LabeledWidget
