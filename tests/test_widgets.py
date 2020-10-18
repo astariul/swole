@@ -1,5 +1,5 @@
 import pytest
-from swole.widgets import Widget, Input
+from swole.widgets import Widget, Input, Header
 
 
 def test_widget_id(scratch):
@@ -29,3 +29,16 @@ def test_widget_cls(kwargs, cls):
 def test_widget_cls_error():
     with pytest.raises(ValueError):
         Widget(cls=1)
+
+
+@pytest.mark.parametrize("level,err", [(0, True), (1, False), (2, False), (3, False),
+                                       (4, False), (5, False), (6, False), (7, True),
+                                       (100, True), ("1", True), ("whatever", True),
+                                       (1.2, True), ([1], True)])
+def test_header_error(level, err):
+    try:
+        Header(level=level)
+    except ValueError:
+        assert err
+    else:
+        assert not err
