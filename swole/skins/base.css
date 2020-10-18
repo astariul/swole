@@ -37,4 +37,6 @@ h5 {
 h6 {
     font-size: 1em;
     color: #6a737d;
+label {
+    font-size: 1.2rem;
 }

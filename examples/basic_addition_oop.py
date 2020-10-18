@@ -2,8 +2,8 @@ from swole import Application, Ajax, Page
 from swole.widgets import Input, Button, Markdown
 
 
-i_a = Input()
-i_b = Input()
+i_a = Input(label="First number")
+i_b = Input(label="Second number")
 m = Markdown("Result : ")
 
 
@@ -25,8 +25,8 @@ p.add(m)
 
 # Alternative syntax
 # with Page():
-#     i_a = Input()
-#     i_b = Input()
+#     i_a = Input(label="First number")
+#     i_b = Input(label="Second number")
 #     m = Markdown("Result : ")
 
 #     def addition(a, b):

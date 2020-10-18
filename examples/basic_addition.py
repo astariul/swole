@@ -3,8 +3,8 @@ from swole.widgets import Input, Button, Markdown, Title
 
 
 Title("Basic addition")
-i_a = Input()
-i_b = Input()
+i_a = Input(label="First number")
+i_b = Input(label="Second number")
 b = Button("Compute")
 m = Markdown("Result : ")
 

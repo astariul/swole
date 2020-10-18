@@ -5,9 +5,12 @@ from swole.widgets import Input, Button, Markdown, Header
 Input()
 Input(wide=False)
 Input(placeholder="placeholder", wide=False)
+Input(label="labeled", placeholder="placeholder", wide=False)
 
 Button("Button")
+Button("Button", wide=True)
 Button("Button", primary=True)
+Button("Button", primary=True, wide=True)
 
 Markdown("Short Markdown")
 Markdown("Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super "

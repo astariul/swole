@@ -1,9 +1,10 @@
 from dominate.tags import input_
 
-from swole.widgets.base import Widget
+from swole.widgets.base import WideWidget, labeled
 
 
-class Input(Widget):
+@labeled
+class Input(WideWidget):
     """ Widget to create an input.
 
     Attributes:
@@ -18,14 +19,11 @@ class Input(Widget):
             placeholder (`str`, placeholder): Placeholder for the input. If
                 `None`, no placeholder is used. Defaults to `None`.
         """
-        super().__init__(**kwargs)
+        super().__init__(wide=wide, **kwargs)
         self.type = type
         self.placeholder = placeholder
         self.value = placeholder
         self.jquery_fn = "val"
-
-        if wide:
-            self.cls.append('u-full-width')
 
     def html(self):
         attributes = {

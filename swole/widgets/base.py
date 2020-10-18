@@ -1,3 +1,6 @@
+from dominate.tags import div, label
+
+
 class Widget():
     """ Base class for all Widgets.
 
@@ -12,7 +15,14 @@ class Widget():
     _declared = []      # List of all declared Widget
 
     def __init__(self, cls=None):
-        """ Constructor. """
+        """ Constructor.
+
+        Arguments:
+            cls (str or list of str, optional): Class(es) to add to the Widget.
+                Can be a single class (`str`) or several classes (`list of
+                str`). If `None` is given, no additional class is added.
+                Defaults to `None`.
+        """
         Widget._id += 1
         Widget._declared.append(self)
         self.id = Widget._id
@@ -79,3 +89,52 @@ class Widget():
             x (str): Value of the widget to set.
         """
         raise NotImplementedError()
+
+
+class WideWidget(Widget):
+    """ Class for Widgets that can be wide.
+
+    Attributes:
+        wide (bool): If set to `True`, the widget will take all the available
+            width.
+    """
+
+    def __init__(self, wide=False, *args, **kwargs):
+        """ Constructor.
+
+        Arguments:
+            wide (bool, optional): If set to `True`, the widget will take all
+                the available width. Defaults to `False`.
+        """
+        super().__init__(*args, **kwargs)
+
+        if wide:
+            self.cls.insert(0, 'u-full-width')
+
+
+def labeled(cls):
+    """ Class decorator for Widget that can be labeled. This decorator simply
+    define a sub-class of the given class, and change the constructor and the
+    html method to add a label.
+    """
+    class LabeledWidget(cls):
+        def __init__(self, label=None, *args, **kwargs):
+            """ Constructor.
+
+            Arguments:
+                label (`str`): Label to give to the Widget.
+            """
+            super().__init__(*args, **kwargs)
+            self.label = label
+
+        def html(self):
+            if self.label is None:
+                return super().html()
+            else:
+                d = div()
+                with d:
+                    label(self.label, _for=self.id)
+                    super().html()
+                return d
+
+    return LabeledWidget
