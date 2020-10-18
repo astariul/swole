@@ -1,7 +1,8 @@
 from swole import Application, ajax
-from swole.widgets import Input, Button, Markdown
+from swole.widgets import Input, Button, Markdown, Title
 
 
+Title("Basic addition")
 i_a = Input()
 i_b = Input()
 b = Button("Compute")
