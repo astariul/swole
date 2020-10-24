@@ -43,10 +43,8 @@ _⚠️ For now this is an Alpha version, only a **proof-of-concept**. Only mini
 Simply run :
 
 ```console
-pip install git+https://github.com/astariul/swole.git
+pip install swole
 ```
-
-_This package is not yet published on PyPi because it's still a prototype_
 
 <h2 align="center">Usage</h2>
 
