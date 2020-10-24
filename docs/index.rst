@@ -13,6 +13,7 @@ You can find the code in `this repository <https://github.com/astariul/swole>`_.
    :name: sec-start
 
    start/install
+   start/base
    start/examples
 
 .. toctree::
@@ -20,7 +21,7 @@ You can find the code in `this repository <https://github.com/astariul/swole>`_.
    :caption: Guides
    :name: sec-guides
 
-   guides/base
+   guides/architecture
    guides/skins
    guides/widgets
 
