@@ -16,8 +16,8 @@ _⚠️ For now this is an Alpha version, only a **proof-of-concept**. Only mini
   <a href="#install">Install</a> •
   <a href="#usage">Usage</a> •
   <a href="https://github.com/astariul/swole/tree/master/examples">Examples</a> •
-  <a href="#contribute">Contribute</a> •
-  <a href="#faq">FAQ</a>
+  <a href="#faq">FAQ</a> •
+  <a href="#contribute">Contribute</a>
   <br>
   <a href="https://swole.readthedocs.io/en/stable/" target="_blank">Documentation</a>
 </p>
@@ -96,47 +96,6 @@ Visit [`127.0.0.1:8000`](http://127.0.0.1:8000) :
 
 _For more examples, check the [`examples`](https://github.com/astariul/swole/tree/master/examples) folder !_
 
-<h2 align="center">Contribute</h2>
-
-Clone the repository, install and create your own branch :
-
-```console
-git clone https://github.com/astariul/swole.git
-cd swole
-pip install -e .
-git checkout -b my_branch
-```
-
----
-
-Add your dogesome code !
-
-_Don't forget to update tests and documentation !_
-
----
-
-Ensure tests are passing :
-
-```console
-pip install pytest
-
-python -m pytest -W ignore::DeprecationWarning
-```
-
----
-
-Check if code is well-formated :
-
-```console
-pip install flake8
-
-flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --per-file-ignores="__init__.py:F401"
-```
-
----
-
-Submit your PR !
-
 <h2 align="center">FAQ</h2>
 
 #### **Why using `swole` ? Why not `streamlit` ?**
@@ -168,3 +127,44 @@ It all comes from a meme :
 <p align="center">
     <img src="https://raw.githubusercontent.com/astariul/swole/master/.github/meme.png" width="450">
 </p>
+
+<h2 align="center">Contribute</h2>
+
+Fork the repository, clone it locally, install it and create your own branch :
+
+```console
+git clone https://github.com/astariul/swole.git
+cd swole
+pip install -e .
+git checkout -b my_branch
+```
+
+---
+
+Add your dogesome code !
+
+_Don't forget to update tests and documentation !_
+
+---
+
+Check if code is well-formated :
+
+```console
+pip install flake8
+
+flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --per-file-ignores="__init__.py:F401"
+```
+
+---
+
+Ensure tests are passing :
+
+```console
+pip install pytest
+
+python -m pytest -W ignore::DeprecationWarning
+```
+
+---
+
+Submit your PR !
