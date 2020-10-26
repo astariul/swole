@@ -85,3 +85,6 @@ You're all done ! Now you just have to use your :class:`~swole.widgets.Widget` i
 .. code-block:: python
 
     TwoButtons(text2="My 2 buttons")
+    
+    if __name__ == "__main__":
+        Application().serve()

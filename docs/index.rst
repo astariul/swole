@@ -38,5 +38,5 @@ You can find the code in `this repository <https://github.com/astariul/swole>`_.
    :caption: Others
    :name: sec-other
 
-   others/FAQ
+   others/faq
    others/contribute
