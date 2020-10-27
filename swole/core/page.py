@@ -6,7 +6,9 @@ from swole.widgets.base import Widget
 from swole.skins import Skin
 
 
-HOME_ROUTE = "/"
+HOME_ROUTE = "/"    #: Default route for the Home page.
+
+#: Default favicon (Doge).
 DEFAULT_FAVICON = "https://user-images.githubusercontent.com/22237185/95144545-e35d1200-07b3-11eb-9216-362b2a19c9aa.png"
 JQUERY_CDN = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 COMMON_JS = """
@@ -30,24 +32,16 @@ COMMON_JS = """
 
 
 class Page():
-    """ Class representing a page.
-
-    Attributes:
-        route (`str`): The route to access this page.
-        skin (Skin): The Skin object for this page.
-        favicon (`str`): The path to the favicon image to use for this page.
-        title (`str`): The title of the page.
-    """
+    """ Class representing a page. """
 
     _dict = {}      # Dictionary of all declared Page with their route
 
     def __init__(self, route=HOME_ROUTE, skin="base", skin_path=None,
                  title="Home", favicon=DEFAULT_FAVICON):
-        """ Constructor.
-
+        """
         Arguments:
             route (`str`, optional): The route to access this page. Defaults to
-                `/`.
+                :const:`~swole.core.page.HOME_ROUTE`.
             skin (`str`, optional): The name of the skin to use for this page.
                 If `None` is given, no skin is loaded. Defaults to `base`.
             skin_path (`str`, optional): The path of the Skin file to use. If
@@ -56,7 +50,7 @@ class Page():
                 Defaults to `None`.
             title (`str`, optional): The title of the page. Defaults to `Home`.
             favicon (`str`, optional): The path to the favicon to use for this
-                page. Defaults to doge image.
+                page. Defaults to :const:`~swole.core.page.DEFAULT_FAVICON`.
         """
         Page._dict[route] = self
         self.route = route

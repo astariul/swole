@@ -11,7 +11,7 @@ from swole.core.utils import route_to_filename
 from swole.widgets import Widget
 
 
-SWOLE_CACHE = "~/.cache/swole"
+SWOLE_CACHE = "~/.cache/swole"      #: Default directory to use for caching.
 
 
 class Application():
@@ -19,13 +19,9 @@ class Application():
     declared pages.
 
     Attributes:
-        files (`dict`): Dictionary[`str`: `str`] listing all possible routes and
-            their corresponding saved HTML file. This attribute is set only
-            after calling the method `write()`.
         fapi (`fastapi.FastAPI`): FastAPI app.
     """
     def __init__(self):
-        """ Constructor. """
         self.files = None
         self.fapi = FastAPI()
 
@@ -50,7 +46,7 @@ class Application():
 
         Arguments:
             folder (`str`, optional): Folder where to save HTML files. Defaults
-                to SWOLE_CACHE.
+                to :const:`~swole.core.application.SWOLE_CACHE`.
         """
         os.makedirs(folder, exist_ok=True)
 
@@ -93,7 +89,7 @@ class Application():
 
         Arguments:
             folder (`str`, optional): Folder where to save HTML files. Defaults
-                to SWOLE_CACHE.
+                to :const:`~swole.core.application.SWOLE_CACHE`.
             host (`str`, optional): Run FastAPI on this host. Defaults to
                 `0.0.0.0`.
             port (`int`, optional): Run FastAPI on this port. Defaults to

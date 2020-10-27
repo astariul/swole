@@ -5,15 +5,9 @@ from swole.widgets.base import WideWidget, labeled
 
 @labeled
 class Input(WideWidget):
-    """ Widget to create an input.
-
-    Attributes:
-        type (`str`): Type of input.
-        placeholder (`str`): Placeholder of input.
-    """
+    """ Widget to create an input. """
     def __init__(self, type="number", placeholder=None, wide=True, **kwargs):
-        """ Constructor.
-
+        """
         Arguments:
             type (`str`, optional): Type of the input. Defaults to `number`.
             placeholder (`str`, placeholder): Placeholder for the input. If

@@ -4,15 +4,9 @@ from swole.widgets.base import WideWidget
 
 
 class Button(WideWidget):
-    """ Widget to create a button.
-
-    Attributes:
-        text (`str`): Text of the button.
-        primary (`bool`): Wether this button is primary or not.
-    """
+    """ Widget to create a button. """
     def __init__(self, text="Button", primary=False, onclick=None, **kwargs):
-        """ Constructor.
-
+        """
         Arguments:
             text (`str`, optional): Text of the button. Defaults to `Button`.
             primary (`bool`, optional): Wether this button is primary or not.

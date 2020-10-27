@@ -7,19 +7,13 @@ H_X = [h1, h2, h3, h4, h5, h6]
 
 
 class Header(Widget):
-    """ Widget to create a header.
-
-    Attributes:
-        text (`str`): Text of the header.
-        level (`int`): Leve of the header. `1` to `6` only.
-        center (`bool`): Wether to put this header in the middle.
-    """
+    """ Widget to create a header. """
     def __init__(self, text="Header", level=2, center=False, **kwargs):
-        """ Constructor.
-
+        """
         Arguments:
             text (`str`, optional): Text of the header. Defaults to `Header`.
-            level(`int`, optional): Level of the header. Defaults to `2`.
+            level(`int`, optional): Level of the header. `1` to `6` only.
+                Defaults to `2`.
             center (`bool`, optional): Wether to put this header in the middle
                 or not. Defaults to `False`.
         """
@@ -47,14 +41,14 @@ class Header(Widget):
 
 
 class Title(Header):
-    """ Widget to create a title. A title is a Header with level 1. """
+    """ Widget to create a title. """
     def __init__(self, *args, **kwargs):
-        """ Constructor. """
+        """ A title is a Header with level `1`. """
         super().__init__(*args, level=1, **kwargs)
 
 
 class SubHeader(Header):
-    """ Widget to create a sub-header. A sub-header is a Header with level 3. """
+    """ Widget to create a sub-header. """
     def __init__(self, *args, **kwargs):
-        """ Constructor. """
+        """ A sub-header is a Header with level `3`. """
         super().__init__(*args, level=3, **kwargs)

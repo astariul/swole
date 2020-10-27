@@ -15,3 +15,6 @@ docs/_build/
 # Twine
 build/*
 dist/*
+
+# VScode
+.vscode/*
