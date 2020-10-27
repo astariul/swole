@@ -1,4 +1,4 @@
-from .base import Widget
+from .base import Widget, WideWidget, labeled
 from .input import Input
 from .button import Button
 from .header import Header, Title, SubHeader
