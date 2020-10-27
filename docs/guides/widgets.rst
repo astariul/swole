@@ -73,7 +73,7 @@ In our case it's simple :
 Step 4 : define AJAX (optional)
 -------------------------------
 
-Optionally, your :class:`~swole.widgets.Widget` can also overwrite the method :meth:`~swole.widgets.Widget.ajax`. This method is used to retrieve AJAX requests linked to this :class:`~swole.widgets.Widget`. It should return a :class:`~swole.core.Ajax` object.
+Optionally, your :class:`~swole.widgets.Widget` can also overwrite the method :meth:`~swole.widgets.Widget.ajax`. This method is used to retrieve AJAX requests linked to this :class:`~swole.widgets.Widget`. It should return a :class:`~swole.Ajax` object.
 
 You can refer the implementation of :class:`~swole.widgets.Button` for an example.
 

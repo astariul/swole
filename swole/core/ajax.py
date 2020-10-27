@@ -15,23 +15,17 @@ def ajax(*args):
 class Ajax():
     """ Class representing an AJAX request. It is used as callback to update
     the webpage dynamically.
-
-    Attributes:
-        callback (callable): Function to execute when the AJAX is called.
-        inputs (list of Widget): Inputs to the callback.
-        trigger (Widget): Widget triggering the AJAX request.
     """
 
     _id = 0
 
     def __init__(self, callback, inputs):
-        """ Constructor. Make the AJAX from the function to execute, and define
+        """ Constructor : Make the AJAX from the function to execute, and define
         the inputs as given.
 
         Arguments:
             callback (callable): Function to execute when the AJAX is called.
             inputs (list of Widget): Inputs to the callback.
-            trigger (Widget): Widget triggering the AJAX request.
         """
         Ajax._id += 1
         self.id = Ajax._id

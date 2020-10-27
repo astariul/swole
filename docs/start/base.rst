@@ -54,4 +54,4 @@ Now that the code is written, you can start your app with :
 
     python app.py
 
-You can now visit `127.0.0.1:8000 <http://127.0.0.1:8000>`_ and see your app running !
+You can visit `127.0.0.1:8000 <http://127.0.0.1:8000>`_ and see your app running !

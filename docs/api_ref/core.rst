@@ -4,22 +4,31 @@ Swole
 Application
 -----------
 
+.. autodata:: swole.core.application.SWOLE_CACHE
+
 .. autoclass:: swole.Application
-    :members:
+    :members: serve
 
 Page
 ----
 
+.. autodata:: swole.core.page.HOME_ROUTE
+
+.. autodata:: swole.core.page.DEFAULT_FAVICON
+    :annotation: = Doge
+
 .. autoclass:: swole.Page
-    :members:
+    :members: add
+    :special-members: __enter__, __exit__
 
 Ajax
 ----
 
 .. autoclass:: swole.Ajax
     :members:
+    :special-members: __call__
 
-.. autofunction:: swole.ajax
+.. autodecorator:: swole.ajax
 
 Skin
 ----
@@ -30,4 +39,4 @@ Skin
 utils
 -----
 
-.. autofunction:: swole.route_to_filename
+.. autofunction:: swole.core.route_to_filename

@@ -5,9 +5,8 @@ class Widget():
     """ Base class for all Widgets.
 
     Attributes:
-        id (int): The ID of the Widget. Each created Widget have his own ID.
         jquery_fn (str): The name of the JQuery function to use to get the value
-            of the widget from the HTML page.
+            of the widget from the HTML page. Defaults to `text`.
         cls (list of str): List of CSS classes to apply to this widget.
     """
 
@@ -15,8 +14,7 @@ class Widget():
     _declared = []      # List of all declared Widget
 
     def __init__(self, cls=None):
-        """ Constructor.
-
+        """
         Arguments:
             cls (str or list of str, optional): Class(es) to add to the Widget.
                 Can be a single class (`str`) or several classes (`list of
@@ -52,6 +50,9 @@ class Widget():
         """ Method to get the `dominate` HTML of the widget. This HTML needs to
         be rendered.
 
+        .. Note::
+            This method should be overwritten.
+
         Returns:
             dominate.document: HTML document corresponding to the widget.
         """
@@ -69,6 +70,9 @@ class Widget():
     def get(self):
         """ Method to get the current value of the widget.
 
+        .. Note::
+            This method should be overwritten.
+
         Returns:
             object: Current value of the widget.
         """
@@ -85,6 +89,9 @@ class Widget():
     def set(self, x):
         """ Method to set the current value of the widget.
 
+        .. Note::
+            This method should be overwritten.
+
         Arguments:
             x (str): Value of the widget to set.
         """
@@ -92,16 +99,10 @@ class Widget():
 
 
 class WideWidget(Widget):
-    """ Class for Widgets that can be wide.
-
-    Attributes:
-        wide (bool): If set to `True`, the widget will take all the available
-            width.
-    """
+    """ Class for Widgets that can be wide. """
 
     def __init__(self, wide=False, *args, **kwargs):
-        """ Constructor.
-
+        """
         Arguments:
             wide (bool, optional): If set to `True`, the widget will take all
                 the available width. Defaults to `False`.
@@ -119,8 +120,7 @@ def labeled(cls):
     """
     class LabeledWidget(cls):
         def __init__(self, label=None, *args, **kwargs):
-            """ Constructor.
-
+            """
             Arguments:
                 label (`str`): Label to give to the Widget.
             """

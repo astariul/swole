@@ -1,14 +1,14 @@
 Make you own Skin
 =================
 
-As mentioned in `<guides/architecture.rst#Styling>`__, you can change the skin of your webpage by simply specifying the path to the skin to use.
+As mentioned in :ref:`styling-anchor`, you can change the skin of your webpage by simply specifying the path to the skin to use.
 
 This means you can create your own :class:`~swole.skins.Skin` !
 
 Structure of the Skin file
 --------------------------
 
-A :class:`~swole.skins.Skin` file is simply a `CSS` file.
+A :class:`~swole.skins.Skin` file is simply a CSS file.
 
 But the content is devided in 3 parts :
 
@@ -33,6 +33,18 @@ Finally, **Custom rules** are specified as normal CSS. For example :
     }
 
 **Each part is divided by an empty line.**
+
+So in the end, your custom :class:`~swole.skins.Skin` file may look like :
+
+.. code-block:: css
+
+    /* https://cdn./my/imported/css */
+
+    /* https://fonts.googleapis.com/my_font */
+
+    body {
+        text-align: center;
+    }
 
 Use your own Skin
 -----------------

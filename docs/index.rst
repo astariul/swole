@@ -30,8 +30,8 @@ You can find the code in `this repository <https://github.com/astariul/swole>`_.
    :caption: API Reference
    :name: sec-apiref
 
-   api_ref/core
    api_ref/widgets
+   api_ref/core
 
 .. toctree::
    :maxdepth: 1

@@ -10,10 +10,11 @@ class Skin():
         path (str): Path of the CSS file for this skin.
         libs (list of str): External CSS libraries to import additionally.
         fonts (list of str): External fonts to import additionally.
+        rules (str): Custom rules as defined in the Skin file.
     """
 
     def __init__(self, name="base", path=None):
-        """ Constructor. Try to locate the file, then read it to extract
+        """ Constructor : Try to locate the file, then read it to extract
         external CSS resources links.
 
         Arguments:
