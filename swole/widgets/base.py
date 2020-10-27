@@ -120,10 +120,6 @@ def labeled(cls):
     """
     class LabeledWidget(cls):
         def __init__(self, label=None, *args, **kwargs):
-            """
-            Arguments:
-                label (`str`): Label to give to the Widget.
-            """
             super().__init__(*args, **kwargs)
             self.label = label
 
@@ -137,4 +133,9 @@ def labeled(cls):
                     super().html()
                 return d
 
+    # Give right meta-information to the class
+    LabeledWidget.__name__ = cls.__name__
+    LabeledWidget.__module__ = cls.__module__
+    LabeledWidget.__doc__ = cls.__doc__
+    LabeledWidget.__init__.__doc__ = cls.__init__.__doc__ + "    label (`str`): Label to give to the Widget."
     return LabeledWidget
