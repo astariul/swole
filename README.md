@@ -105,6 +105,7 @@ Don't get me wrong, `streamlit` is an awesome framework. `swole` just try to fix
 * It uses `Flask`, which is outdated and not performant when compared to `FastAPI`.
 * No customization possible
 * No control over user's interaction with the page
+* Not transparent
 * No Doge 😢
 
 #### **How `swole`'s backend and frontend communicate ?**
