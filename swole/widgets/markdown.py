@@ -32,6 +32,9 @@ class DominateRenderer(RendererHTML):
                     tag = tag(c) if token.attrs is None else tag(c, **token.attrs)
                     pending_content[-1].append(tag)
                 else:       # Opening tag
+                    if token.tag == "p" and len(pending_tags) > 0 and pending_tags[-1] == "li":
+                        continue
+
                     pending_tags.append(token.tag)
                     pending_content.append([])
             elif token.children is not None:

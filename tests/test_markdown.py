@@ -15,7 +15,7 @@ from swole.widgets.markdown import DominateRenderer
     ("This **is** right", "<div><p>This <strong>is</strong> right</p></div>"),
     ("This _is_ right", "<div><p>This <em>is</em> right</p></div>"),
     ("Paragraph 1\n\n---\n\nParapgrah 2", "<div><p>Paragraph 1</p><hr><p>Parapgrah 2</p></div>"),
-    ("* List 1\n* List 2", "<div><ul><li><p>List 1</p></li><li><p>List 2</p></li></ul></div>"),
+    ("* List 1\n* List 2", "<div><ul><li>List 1</li><li>List 2</li></ul></div>"),
     ("This `is` code", "<div><p>This <code>is</code> code</p></div>"),
     ("```python\nis\n```", "<div><pre><code>is\n</code></pre></div>"),
     ("Line 1\nLine 2", "<div><p>Line 1<br>Line 2</p></div>"),
