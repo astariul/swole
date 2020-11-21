@@ -90,10 +90,8 @@ class Markdown(Widget):
     def html(self):
         md = MarkdownIt(renderer_cls=DominateRenderer).enable('table')
         html = md.render(self.content)
-        html.id = self.id
+        html.attributes["id"] = self.id
         return html
-        # TODO : Full markdown parsing + convertion to dominate tags
-        return p(self.content, id=self.id)
 
     def get(self):
         return self.content
