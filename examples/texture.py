@@ -29,6 +29,31 @@ Header(level=4, center=True)
 Header(level=5, center=True)
 Header(level=6, center=True)
 
+Markdown("""# Title 1
+## Title 2
+
+Markdown.
+Markdown.
+
+This is a list :
+* Element 1
+* Element 2
+
+Normal text
+**Bold text**
+*Italic text*
+_Italic text_
+
+---
+
+Horizontal ruler.
+
+Code `inside` the line.
+
+```python
+Full code
+```""")
+
 
 if __name__ == "__main__":
     Application().serve()
