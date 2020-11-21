@@ -1,5 +1,5 @@
 import dominate
-from dominate.tags import div, code, pre, p
+from dominate.tags import div, code, pre
 from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererHTML
 from markdown_it.common.utils import escapeHtml
