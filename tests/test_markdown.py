@@ -18,6 +18,7 @@ from swole.widgets.markdown import DominateRenderer
     ("* List 1\n* List 2", "<div><ul><li><p>List 1</p></li><li><p>List 2</p></li></ul></div>"),
     ("This `is` code", "<div><p>This <code>is</code> code</p></div>"),
     ("```python\nis\n```", "<div><pre><code>is\n</code></pre></div>"),
+    ("Line 1\nLine 2", "<div><p>Line 1<br>Line 2</p></div>"),
     ])
 def test_renderer(inp, out):
     md = MarkdownIt(renderer_cls=DominateRenderer).enable('table')
