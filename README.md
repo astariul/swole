@@ -114,7 +114,7 @@ Unlike `streamlit`, which use a system of cache and reload the page everytime so
 
 Reloading the page every interaction is very inefficient, and irritating for the user's experience.
 
-Using AJAX instead makes the whole process almost invisible for the user, and everything is more clear for the developper because we know what data is sent when.
+Using AJAX instead makes the whole process almost invisible for the user, and everything is more clear for the developer because we know what data is sent when.
 
 #### **Why do you say `swole` is "transparent" but `streamlit` is "opaque" ?**
 
