@@ -19,9 +19,9 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     package_data={'swole': ['skins/*.css']},
     classifiers=[
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.8",
     install_requires=reqs,
 )
