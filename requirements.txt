@@ -1,5 +1,5 @@
 dominate==2.5.2
-fastapi==0.65.2
+fastapi==0.109.1
 uvicorn==0.11.8
 aiofiles==0.5.0
 markdown-it-py==2.2.0
